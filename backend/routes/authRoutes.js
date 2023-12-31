@@ -38,4 +38,36 @@ router.post('/signin', async(req,res,next)=>{
    })
 
 
+
+   router.post('/google', async (req,res,next)=>{
+      try{
+         const user =await User.findOne({email:req.body.email})
+         if(user){
+            const token =jwt.sign({id:user._id},process.env.SECRET);
+            const {password:hashedPassword, ...rest}=user._doc;
+            const expireDate =new Date(Date.now()+360000);
+            res.cookie('access-token',token,{httpOnly:true,expires:expireDate}).status(200).json(rest);
+         } else{
+            const generatedPassword=Math.random().toString(36).slice(-8) +Math.random().toString(36).slice(-8) ;
+            const hashedPassword =bcrypt.hashSync(generatedPassword,10);
+            const newUser =new User({
+               username:req.body.name.split(" ").join("").toLowerCase()+Math.random().toString(36).slice(-8),
+               email:req.body.email,
+               password:hashedPassword,
+               profilePicture:req.body.photo
+            })
+            await newUser.save();
+            const token =jwt.sign({id:newUser._id},process.env.SECRET);
+            const {password:hashedPassword2, ...rest}=newUser._doc;
+            const expireDate=new Date(Date.now()+36000);
+            res.cookie('access-token',token,{httpOnly:true,expires:expireDate}).status(200).json(rest);
+         }
+      }catch(error){
+
+      }
+   })
+
+   router.get('/signout', (req,res)=>{
+      res.clearCookie('access-token').status(200).json('Signout is successfull!!!')
+   })
 export default router;
