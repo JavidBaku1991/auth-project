@@ -35,6 +35,6 @@ const handle=async()=>{
 }
 
   return (
-   <button type='button' onClick={handle} className='bg-red-700 text-white rounded-lg p-3 uppercase hover:opacity=90'>Continue with Google</button>
+   <button type='button' onClick={handle} className='bg-green-700 text-white rounded-lg p-3 uppercase hover:opacity-80'>Continue with Google</button>
   )
 }

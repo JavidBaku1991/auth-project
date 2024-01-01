@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dashboard-container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../client/src/images/sea.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile-info{
+margin: 20px;
+padding: 10px;
+border-bottom: 3px solid  rgb(41, 41, 67);
+display: flex;
+flex-direction: column;
+
+}
+
+.profile-lable{
+    font-weight: 700;
+}
+
+
+.navbar{
+background-color: transparent;
+
+
+}
+
+.navbar-link{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin-right: 30px;
+    display: inline-block;
+    color: #f7efef;
+    text-decoration: none;
+}
+
+
+.navbar-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #e6e4e4;
+    transition: width .3s;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+
+
+.square {
+    position: absolute;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 2px solid rgb(124, 124, 207);
+    animation: rotateSquare 6s linear infinite; /* 3 seconds rotation */
+  }
+  
+  @keyframes rotateSquare {
+    0% {
+      transform: rotate(0deg); /* Initial position */
+    }
+    100% {
+      transform: rotate(360deg); /* Rotating 360 degrees */
+    }
+  }

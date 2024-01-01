@@ -23,18 +23,7 @@ const userSlice=createSlice({
             state.loading=false;
             state.error=action.payload
         },
-        updateUserStart:(state)=>{
-            state.loading=true;
-        },
-        updateUserSucces:(state,action)=>{
-            state.currentUser=action.payload;
-            state.loading=false;
-            state.error=false;
-        },
-        updateUserFailure:(state,action)=>{
-            state.loading=false;
-            state.error=action.payload; 
-        },
+       
         deleteUserStart:(state)=>{
             state.loading=true;
         },

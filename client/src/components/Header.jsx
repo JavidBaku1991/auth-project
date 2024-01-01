@@ -5,20 +5,22 @@ export default function Header() {
 const currentUser=useSelector(state=>state.user);
 
   return (
-    <div className='bg-slate-200'>
-      <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
+    <div className="navbar" >
+      <div className='flex justify-between items-center  mx-auto p-5 '>
         <Link to='/'>
-        <h1 className='font-bold'>AUTH APP</h1>
+        <h1 className='font-bold '>AUTH APP</h1>
         </Link>
         
         <ul className='flex gap-4'>
-          <Link to='/home'>  <li>Home</li> </Link> 
-          <Link to='/about'>  <li>About</li> </Link> 
+          <Link to='/home'>  <li className="navbar-link">Home</li> </Link> 
+          <Link to='/about'>  <li className="navbar-link">About</li> </Link> 
+          <Link to='/signup'>  <li className="navbar-link">Signup</li> </Link> 
           <Link to='/profile'> 
+
           {currentUser ? (
-            <p>Profile</p>
+            <p className="navbar-link">Profile</p>
 ):
-             (<li>Sign In</li> )
+             (<li className="navbar-link">Sign In</li> )
           }
           </Link> 
            

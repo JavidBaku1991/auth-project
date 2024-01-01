@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link,useNavigate} from 'react-router-dom'
 import OAuth from '../components/OAuth';
+import Header from '../components/Header';
 
 export default function SignUp() {
 const [formData, setFormData]=useState({});
@@ -40,7 +41,9 @@ setLoading(false)
 }
 
 return (
-    <div className='p-3 max-w-lg mx-auto'>
+  <div className='dashboard-container'>
+    <Header />
+     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text=3xl text-center font-semibold my-7'>Sign Up</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
          <input type='text' placeholder='Username' id='username' className='bg-slate-100 p-3 rounded-lg' onChange={handleChange}/>
@@ -60,5 +63,7 @@ return (
         </div>
         <p className='text-red-700 mt-5'>{error && 'Something went wrong'}</p>
     </div>
+  </div>
+   
   )
 }
